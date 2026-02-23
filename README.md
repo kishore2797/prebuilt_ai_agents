@@ -670,66 +670,84 @@ We welcome contributions to this repository! Here's how you can help:
 
 ---
 
-Types of RAG (Retrieval-Augmented Generation)
+## Types of RAG (Retrieval-Augmented Generation)
+
 Here are the main types:
 
-By Retrieval Strategy
-Naive RAG – Basic retrieve-then-generate pipeline; chunk docs, embed, retrieve top-k, generate
-Advanced RAG – Adds pre/post retrieval steps: query rewriting, re-ranking, hybrid search
-Modular RAG – Composable modules (retriever, reranker, generator) that can be swapped independently
-By Retrieval Granularity
-Chunk-based RAG – Fixed or semantic text chunks
-Sentence-level RAG – Finer granularity for precision
-Document-level RAG – Retrieves full documents
-By Index/Search Type
-Dense RAG – Vector similarity search (embeddings)
-Sparse RAG – Keyword-based (BM25, TF-IDF)
-Hybrid RAG – Combines dense + sparse retrieval
-By Architecture
-Single-hop RAG – One retrieval step per query
-Multi-hop RAG – Iterative retrieval; each step informs the next (e.g., for complex reasoning)
-Agentic RAG – LLM agent decides when and what to retrieve dynamically
-Self-RAG – Model learns to critique and selectively retrieve using special tokens
-Corrective RAG (CRAG) – Evaluates retrieved docs and falls back to web search if low quality
-Graph RAG – Retrieves from a knowledge graph instead of flat vector store
-By Knowledge Source
-Local RAG – Private/local document stores
-Web RAG – Real-time web retrieval
-Structured RAG – Retrieves from databases/tables (Text-to-SQL + RAG)
-Multimodal RAG – Retrieves images, audio, video alongside text
+### By Retrieval Strategy
+- **Naive RAG** – Basic retrieve-then-generate pipeline; chunk docs, embed, retrieve top-k, generate
+- **Advanced RAG** – Adds pre/post retrieval steps: query rewriting, re-ranking, hybrid search
+- **Modular RAG** – Composable modules (retriever, reranker, generator) that can be swapped independently
 
+### By Retrieval Granularity
+- **Chunk-based RAG** – Fixed or semantic text chunks
+- **Sentence-level RAG** – Finer granularity for precision
+- **Document-level RAG** – Retrieves full documents
 
-Decision Framework: Which RAG to Use
+### By Index/Search Type
+- **Dense RAG** – Vector similarity search (embeddings)
+- **Sparse RAG** – Keyword-based (BM25, TF-IDF)
+- **Hybrid RAG** – Combines dense + sparse retrieval
+
+### By Architecture
+- **Single-hop RAG** – One retrieval step per query
+- **Multi-hop RAG** – Iterative retrieval; each step informs the next (e.g., for complex reasoning)
+- **Agentic RAG** – LLM agent decides when and what to retrieve dynamically
+- **Self-RAG** – Model learns to critique and selectively retrieve using special tokens
+- **Corrective RAG (CRAG)** – Evaluates retrieved docs and falls back to web search if low quality
+- **Graph RAG** – Retrieves from a knowledge graph instead of flat vector store
+
+### By Knowledge Source
+- **Local RAG** – Private/local document stores
+- **Web RAG** – Real-time web retrieval
+- **Structured RAG** – Retrieves from databases/tables (Text-to-SQL + RAG)
+- **Multimodal RAG** – Retrieves images, audio, video alongside text
+
+---
+
+## Decision Framework: Which RAG to Use
+
 Think of it as a series of questions:
 
-1. How complex is your query?
-Simple, single-fact questions → Naive or Advanced RAG
-Multi-step reasoning (e.g., "Compare X from doc A with Y from doc B") → Multi-hop RAG
-Dynamic, unpredictable queries → Agentic RAG
-2. What's your data source?
-Private docs/files → Local RAG (dense or hybrid)
-Need fresh/real-time info → Web RAG
-Structured DB/tables → Structured RAG (Text-to-SQL)
-Entities with relationships (org charts, knowledge bases) → Graph RAG
-Images + text → Multimodal RAG
-3. How important is retrieval quality?
-Good enough → Naive RAG (fast, simple)
-Need accuracy → Advanced RAG (add re-ranking, query rewriting)
-Retrieved docs might be wrong/irrelevant → Corrective RAG (CRAG)
-Model should self-evaluate → Self-RAG
-4. What are your constraints?
-Constraint	Recommendation
-Low latency needed	Naive RAG, Dense RAG
-Small team, fast prototype	Naive → Advanced RAG
-Keyword + semantic both matter	Hybrid RAG
-Production, high accuracy	Advanced or Modular RAG
-Complex autonomous tasks	Agentic RAG
-Practical Starting Point
+**1. How complex is your query?**
+- Simple, single-fact questions → Naive or Advanced RAG
+- Multi-step reasoning (e.g., "Compare X from doc A with Y from doc B") → Multi-hop RAG
+- Dynamic, unpredictable queries → Agentic RAG
+
+**2. What's your data source?**
+- Private docs/files → Local RAG (dense or hybrid)
+- Need fresh/real-time info → Web RAG
+- Structured DB/tables → Structured RAG (Text-to-SQL)
+- Entities with relationships (org charts, knowledge bases) → Graph RAG
+- Images + text → Multimodal RAG
+
+**3. How important is retrieval quality?**
+- Good enough → Naive RAG (fast, simple)
+- Need accuracy → Advanced RAG (add re-ranking, query rewriting)
+- Retrieved docs might be wrong/irrelevant → Corrective RAG (CRAG)
+- Model should self-evaluate → Self-RAG
+
+**4. What are your constraints?**
+
+| Constraint | Recommendation |
+|---|---|
+| Low latency needed | Naive RAG, Dense RAG |
+| Small team, fast prototype | Naive → Advanced RAG |
+| Keyword + semantic both matter | Hybrid RAG |
+| Production, high accuracy | Advanced or Modular RAG |
+| Complex autonomous tasks | Agentic RAG |
+
+### Practical Starting Point
+
 90% of use cases start here and evolve:
 
+```
 Naive RAG → Hybrid RAG → Advanced RAG → Agentic RAG
-(prototype)   (better recall)  (better precision)  (complex tasks)
-Start simple, measure where it fails, then add complexity only where needed.
+(prototype)  (better recall) (better precision) (complex tasks)
+```
+
+> Start simple, measure where it fails, then add complexity only where needed.
+
 ---
 
 ## 📄 License
