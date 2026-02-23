@@ -670,6 +670,36 @@ We welcome contributions to this repository! Here's how you can help:
 
 ---
 
+Types of RAG (Retrieval-Augmented Generation)
+Here are the main types:
+
+By Retrieval Strategy
+Naive RAG – Basic retrieve-then-generate pipeline; chunk docs, embed, retrieve top-k, generate
+Advanced RAG – Adds pre/post retrieval steps: query rewriting, re-ranking, hybrid search
+Modular RAG – Composable modules (retriever, reranker, generator) that can be swapped independently
+By Retrieval Granularity
+Chunk-based RAG – Fixed or semantic text chunks
+Sentence-level RAG – Finer granularity for precision
+Document-level RAG – Retrieves full documents
+By Index/Search Type
+Dense RAG – Vector similarity search (embeddings)
+Sparse RAG – Keyword-based (BM25, TF-IDF)
+Hybrid RAG – Combines dense + sparse retrieval
+By Architecture
+Single-hop RAG – One retrieval step per query
+Multi-hop RAG – Iterative retrieval; each step informs the next (e.g., for complex reasoning)
+Agentic RAG – LLM agent decides when and what to retrieve dynamically
+Self-RAG – Model learns to critique and selectively retrieve using special tokens
+Corrective RAG (CRAG) – Evaluates retrieved docs and falls back to web search if low quality
+Graph RAG – Retrieves from a knowledge graph instead of flat vector store
+By Knowledge Source
+Local RAG – Private/local document stores
+Web RAG – Real-time web retrieval
+Structured RAG – Retrieves from databases/tables (Text-to-SQL + RAG)
+Multimodal RAG – Retrieves images, audio, video alongside text
+
+---
+
 ## 📄 License
 
 This repository is licensed under the MIT License. See [LICENSE](LICENSE) for details.
