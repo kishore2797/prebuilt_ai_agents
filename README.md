@@ -750,7 +750,265 @@ Naive RAG → Hybrid RAG → Advanced RAG → Agentic RAG
 
 ---
 
-## 📄 License
+## � Known & Verifiable RAG Variants
+
+### Hybrid Multilingual RAG
+RAG applied across multiple languages; retriever handles cross-lingual embeddings (e.g., mBERT, LaBSE) so queries in one language retrieve docs in another. Real and in active use.
+
+### HiRAG / HiFi-RAG
+"Hierarchical" RAG variants that chunk documents at multiple granularity levels (sentence → paragraph → section) and retrieve at the appropriate level. Some papers use "HiFi" to mean high-fidelity retrieval with minimal noise.
+
+### Bidirectional RAG
+Retrieval that works both forward (query → docs) and backward (docs → query verification). Used for answer verification — checks if retrieved docs actually support the generated answer.
+
+### Graph-RAG / Graph-01
+Microsoft's GraphRAG is well-established. "Graph-01" likely refers to a specific paper variant using graph traversal for multi-hop reasoning.
+
+### Mega-RAG
+Refers to scaling RAG to very large corpora (millions of docs) with approximate nearest neighbor (ANN) indexes like FAISS/ScaNN at scale.
+
+---
+
+## 🚀 Advanced RAG Variants – Architecture Notes
+
+This section summarizes emerging Retrieval-Augmented Generation (RAG) architectures and research-driven extensions beyond standard vector-based RAG.
+
+### 1️⃣ Classic RAG (Baseline)
+
+**Concept:** Retrieve relevant documents from a knowledge base and inject them into the LLM prompt for grounded generation.
+
+**Pipeline:**
+```
+User Query
+   ↓
+Vector Embedding
+   ↓
+Similarity Search (Vector DB)
+   ↓
+Top-K Documents
+   ↓
+LLM
+```
+
+**Use Cases:** Enterprise QA, Knowledge base chat, Documentation search
+
+---
+
+### 2️⃣ Mindscape-Aware RAG
+
+**Focus:** Personalized retrieval using user mental models and long-term context.
+
+**Key Idea:** Retrieval adapts based on user history, behavioral patterns, goals, skill level, and emotional tone (optional).
+
+**Architecture:**
+```
+User Query
+   ↓
+User State Model (Profile + Memory)
+   ↓
+Adaptive Retrieval
+   ↓
+LLM
+```
+
+**Use Cases:** AI tutors, Personalized assistants, Strategic advisory AI
+
+**Maturity:** Research / Advanced production customization
+
+---
+
+### 3️⃣ Hypergraph Memory RAG
+
+**Focus:** Multi-entity relational retrieval using hypergraphs.
+
+**Difference from Graph RAG:**
+- Graph: Node → Edge → Node
+- Hypergraph: One relation connects multiple nodes simultaneously
+
+**Architecture:**
+```
+Documents
+   ↓
+Entity Extraction
+   ↓
+Hypergraph Construction
+   ↓
+Query → Graph Traversal
+   ↓
+Relevant Subgraph → LLM
+```
+
+**Use Cases:** Multi-hop reasoning, Surveillance intelligence, Complex business intelligence systems
+
+**Maturity:** Advanced but implementable
+
+---
+
+### 4️⃣ QuCo-RAG (Query-Context Optimization RAG)
+
+**Focus:** Intelligent query rewriting + context compression.
+
+**Pipeline:**
+```
+User Query
+   ↓
+Query Rewriter (LLM)
+   ↓
+Multi-Step Retrieval
+   ↓
+Context Reranking / Compression
+   ↓
+LLM
+```
+
+**Benefits:** Better long-document QA, Reduced hallucination, Improved precision
+
+**Maturity:** Production-ready
+
+---
+
+### 5️⃣ Affordance RAG
+
+**Focus:** Retrieve not only knowledge but actionable capabilities.
+
+**Core Idea:** Combine knowledge retrieval, tool selection, and API invocation.
+
+**Pipeline:**
+```
+User Intent
+   ↓
+Retrieve Relevant Knowledge
+   ↓
+Retrieve Available Tools
+   ↓
+LLM + Tool Execution
+```
+
+**Use Cases:** DevOps copilots, AI workflow agents, Autonomous assistants
+
+**Maturity:** Production-ready (with tool calling)
+
+---
+
+### 6️⃣ SignRAG
+
+**Focus:** Retrieval for sign-language and gesture-based systems.
+
+**Input Type:** Sign video, Motion capture, Gloss annotations
+
+**Pipeline:**
+```
+Sign Video
+   ↓
+Pose + Gesture Encoder
+   ↓
+Embedding Search
+   ↓
+Retrieve Similar Sequences
+   ↓
+Multimodal LLM
+```
+
+**Use Cases:** Accessibility systems, Real-time sign translation
+
+**Maturity:** Research stage
+
+---
+
+### 7️⃣ TV-RAG (Temporal-Visual RAG)
+
+**Focus:** Time-aware video retrieval and reasoning.
+
+**Core Idea:** Retrieve relevant video segments instead of static documents.
+
+**Architecture:**
+```
+Video Input
+   ↓
+Frame Sampling + Temporal Encoding
+   ↓
+Segment Embeddings
+   ↓
+Similarity Search
+   ↓
+LLM Reasoning
+```
+
+**Use Cases:** CCTV analysis, Forensic search, Sports analytics, Robotics
+
+**Maturity:** Emerging but implementable
+
+---
+
+### 8️⃣ RAGPart (Partial Context RAG)
+
+**Focus:** Pass only the most relevant parts of retrieved documents.
+
+**Pipeline:**
+```
+Retrieve Documents
+   ↓
+Fine-Grained Chunk Scoring
+   ↓
+Select High-Importance Segments
+   ↓
+LLM
+```
+
+**Benefits:** Lower token cost, Faster inference, Better signal-to-noise ratio
+
+**Maturity:** Production-ready
+
+---
+
+### 9️⃣ RAGMask
+
+**Focus:** Token-level masking of irrelevant content.
+
+**Concept:** Instead of trimming chunks, mask low-relevance spans before LLM processing.
+
+```
+Original:       Full paragraph
+After Masking:  Important sections visible, rest masked
+```
+
+**Benefits:** Better attention control, Reduced distraction, Efficiency improvements
+
+**Maturity:** Research-level (requires model-level integration)
+
+---
+
+### 🔟 Evolution Overview
+
+| Variant | Focus | Maturity |
+|---|---|---|
+| Classic RAG | Vector similarity | Production |
+| Mindscape-Aware RAG | Personalization | Advanced |
+| Hypergraph Memory RAG | Multi-entity reasoning | Advanced |
+| QuCo-RAG | Query optimization | Production |
+| Affordance RAG | Tool integration | Production |
+| SignRAG | Gesture retrieval | Research |
+| TV-RAG | Video + time reasoning | Emerging |
+| RAGPart | Context efficiency | Production |
+| RAGMask | Token-level filtering | Research |
+
+---
+
+### 🧠 Unified Insight
+
+Most advanced RAG systems in 2026 combine:
+
+- **Hybrid Retrieval** (Vector + Graph)
+- **Query Rewriting**
+- **Context Compression**
+- **Tool-Augmented Agents**
+- **Multimodal Embeddings**
+
+> The real advantage is not in naming the variant — it's in combining the right retrieval strategy for the domain.
+
+---
+
+## �📄 License
 
 This repository is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
