@@ -1,1032 +1,1043 @@
-# 🤖 Prebuilt AI Agents Repository
+# 🧠 AI Agents & RAG — Learning Notes
 
-> A curated collection of AI agent frameworks, tools, and resources for building intelligent autonomous systems
+> Personal notes from my learning journey into AI Agents, RAG systems, retrieval methods, and chunking strategies.
+> Updated continuously as I go deeper.
 
 ## 📚 Table of Contents
 
-- [🚀 Quick Start](#-quick-start)
-- [🏗️ Agent Frameworks](#️-agent-frameworks)
-- [🔧 Tools & Utilities](#-tools--utilities)
-- [📊 Evaluation & Benchmarking](#-evaluation--benchmarking)
-- [📖 Learning Resources](#-learning-resources)
-- [🌟 GitHub Repositories](#-github-repositories)
-- [🤝 Contributing](#-contributing)
+1. [Agent Frameworks & Tools](#1-agent-frameworks--tools)
+2. [GitHub Repositories & Resources](#2-github-repositories--resources)
+3. [Repository Assessments](#3-repository-assessments)
+4. [Learning Path](#4-learning-path)
+5. [RAG — Types & Decision Framework](#5-rag--types--decision-framework)
+6. [RAG — Advanced & Experimental Variants](#6-rag--advanced--experimental-variants)
+7. [Retrieval Methods](#7-retrieval-methods)
+8. [Chunking & Chunk Overlap Strategies](#8-chunking--chunk-overlap-strategies)
 
 ---
 
-## 🚀 Quick Start
-
-This repository serves as a comprehensive guide to prebuilt AI agents, frameworks, and tools that can help you quickly deploy intelligent systems without building everything from scratch.
-
-### What's Inside
-
-- **Agent Frameworks**: Ready-to-use architectures for building AI agents
-- **Evaluation Tools**: Benchmarking and testing suites for agent performance
-- **Learning Resources**: Tutorials, papers, and guides
-- **Community Projects**: Open-source implementations and examples
-
----
-
-## 🏗️ Agent Frameworks
+## 1. Agent Frameworks & Tools
 
 ### Production-Ready Frameworks
 
-| Framework | Language | Key Features | Use Cases |
-|-----------|----------|--------------|-----------|
-| **LangChain** | Python | Memory, chains, agents, tools | RAG, conversational AI |
-| **AutoGPT** | Python | Autonomous task execution | Complex multi-step tasks |
-| **CrewAI** | Python | Multi-agent collaboration | Team-based workflows |
-| **Microsoft AutoGen** | Python | Multi-agent conversations | Group problem-solving |
-| **MetaGPT** | Python | Software development agents | Coding assistants |
+| Framework | Language | Key Features | Best For |
+|-----------|----------|--------------|----------|
+| **LangChain** | Python | Memory, chains, agents, tools, RAG | General-purpose agent + RAG pipelines |
+| **LangGraph** | Python | Stateful agent workflows, cycles | Complex multi-step agent flows |
+| **CrewAI** | Python | Multi-agent collaboration, roles | Team-based task workflows |
+| **Microsoft AutoGen** | Python | Multi-agent conversations | Group problem-solving, debate agents |
+| **MetaGPT** | Python | Software development agents | Coding, architecture planning |
+| **Phidata** | Python | Structured agents, type-safe | Production agents with validation |
 
-### Emerging Frameworks
+### Experimental / Emerging
 
-| Framework | Language | Novelty | Status |
-|-----------|----------|---------|--------|
-| **OpenAI Swarm** | Python | Lightweight multi-agent | Experimental |
-| **Phidata** | Python | Structured agents | Beta |
-| **AgentOps** | Python | Agent monitoring | Early access |
+| Framework | Novelty | Status |
+|-----------|---------|--------|
+| **OpenAI Swarm** | Lightweight multi-agent handoffs | Experimental |
+| **AutoGPT** | Autonomous long-horizon task execution | Community |
+| **AgentOps** | Agent monitoring & tracing | Early access |
 
 ---
 
-## 🔧 Tools & Utilities
+### Development & Observability Tools
 
-### Development Tools
-
-- **AgentOps**: Monitor and debug agent behavior
-- **LangSmith**: Evaluation and tracing for LangChain agents
-- **Weights & Biases**: Experiment tracking for AI agents
-- **CometML**: Agent performance monitoring
+| Tool | Purpose |
+|------|---------|
+| **LangSmith** | Tracing, evaluation, debugging for LangChain |
+| **AgentOps** | Monitor agent behavior, session replays |
+| **Weights & Biases** | Experiment tracking |
+| **CometML** | Agent performance monitoring |
 
 ### Deployment Tools
 
-- **FastAPI**: Build agent APIs
-- **Streamlit**: Quick agent UIs
-- **Gradio**: Shareable agent interfaces
-- **Docker**: Containerize agents
+| Tool | Purpose |
+|------|---------|
+| **FastAPI** | Build REST APIs for agents |
+| **Streamlit / Gradio** | Quick agent UIs for demos |
+| **Docker** | Containerize agents for portability |
+| **Kubernetes** | Scale agent deployments |
 
 ---
 
-## 📊 Evaluation & Benchmarking
+### Benchmarks & Evaluation
 
-### Benchmark Suites
+| Benchmark | What It Measures |
+|-----------|-----------------|
+| **GAIA** | General AI assistant capability |
+| **AgentBench** | Multi-domain agent performance |
+| **EvalAI** | Open evaluation platform |
+| **ai-agent-benchmark-compendium** | 50+ tests across reasoning, tool use, safety |
 
-- **AI Agent Benchmark Compendium**: Comprehensive evaluation metrics
-- **Agent Evaluation**: Standardized testing protocols
-- **GAIA**: General AI Assistant benchmark
-
-### Metrics & KPIs
-
-- **Task Completion Rate**: Success rate on assigned tasks
-- **Tool Usage Efficiency**: Optimal tool selection and usage
-- **Reasoning Quality**: Logical consistency and accuracy
-- **Safety & Compliance**: Adherence to guidelines and constraints
+**Key Metrics to Track:**
+- **Task Completion Rate** — Did the agent finish the job?
+- **Tool Usage Efficiency** — Did it use the right tool at the right time?
+- **Reasoning Quality** — Was the chain of thought logical?
+- **Safety & Compliance** — Did it stay within defined boundaries?
 
 ---
-
-## 📖 Learning Resources
 
 ### Essential Papers
 
-1. **"ReAct: Synergizing Reasoning and Acting in Language Models"**
-2. **"AutoGPT: Autonomous Task Execution"**
-3. **"CrewAI: Collaborative Multi-Agent Systems"**
-4. **"LangChain: A Framework for AI Applications"**
-
-### Tutorials & Guides
-
-- Building your first AI agent
-- Multi-agent system design patterns
-- Agent safety and alignment
-- Production deployment strategies
+| Paper | Why It Matters |
+|-------|---------------|
+| **ReAct** | Combines reasoning + acting in one loop — foundation of most agent designs |
+| **Toolformer** | LLM learns to call APIs on its own |
+| **Self-RAG** | Model decides when to retrieve, critiques its own outputs |
+| **HyDE** | Generate a hypothetical answer first, then use it to retrieve real docs |
+| **GraphRAG (Microsoft)** | Community-based knowledge graph retrieval |
 
 ---
 
-## 🌟 GitHub Repositories
+## 2. GitHub Repositories & Resources
 
-### 🏆 Featured Agent Frameworks
+### Agent Frameworks
 
-#### [HKUDS/ClawWork](https://github.com/HKUDS/ClawWork)
-**🔧 Multi-Modal AI Agent Framework**
+| Repository | What It Is | Best For |
+|------------|-----------|----------|
+| [HKUDS/ClawWork](https://github.com/HKUDS/ClawWork) | Multi-modal agent framework — text, images, audio | Complex reasoning + tool integration |
+| [olly-styles/WorkBench](https://github.com/olly-styles/WorkBench) | Visual agent builder, drag-and-drop, debugging | Learning, prototyping, demos |
+| [microsoft/autogen](https://github.com/microsoft/autogen) | Multi-agent conversation framework | Group problem-solving, autonomous workflows |
+| [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) | Stateful agent workflow graphs | Production agents with persistence |
+| [openai/swarm](https://github.com/openai/swarm) | Lightweight multi-agent handoffs | Fast, minimal agent orchestration |
+| [phidata/phidata](https://github.com/phidata/phidata) | Structured agents with type safety | Production-grade validated agents |
 
-ClawWork is a comprehensive framework for building multi-modal AI agents that can process text, images, and other data types. It excels at complex reasoning tasks and tool integration.
+### Evaluation & Benchmarking
 
-**Key Features:**
-- Multi-modal input processing (text, images, audio)
-- Advanced tool orchestration and selection
-- Hierarchical task decomposition
-- Real-time collaboration capabilities
-- Built-in safety and alignment checks
+| Repository | What It Is |
+|------------|-----------|
+| [philschmid/ai-agent-benchmark-compendium](https://github.com/philschmid/ai-agent-benchmark-compendium) | 50+ benchmark tests — reasoning, tool use, safety, efficiency |
+| [topics/agent-evaluation](https://github.com/topics/agent-evaluation) | Hub aggregating evaluation frameworks, datasets, papers |
+| [reworkd/bananalyzer](https://github.com/reworkd/bananalyzer) | Agent behavior analysis — decision trees, bottleneck detection |
 
-**Use Cases:**
-- Complex problem-solving agents
-- Research assistants
-- Creative content generation
-- Data analysis and visualization
+### Curated Collections
 
-**Tech Stack:**
-- Python 3.8+
-- PyTorch/TensorFlow
-- LangChain integration
-- FastAPI backend
-
-**⭐ Stars:** 1.2k+ | **🍴 Forks:** 180+ | **📅 Updated:** Weekly
+| Repository | What It Is |
+|------------|-----------|
+| [ashishpatel26/500-AI-Agents-Projects](https://github.com/ashishpatel26/500-AI-Agents-Projects) | 500+ agent projects — conversational, automation, creative, research |
+| [slavakurilyak/awesome-ai-agents](https://github.com/slavakurilyak/awesome-ai-agents) | Curated awesome list — frameworks, tools, papers, guides |
 
 ---
 
-#### [olly-styles/WorkBench](https://github.com/olly-styles/WorkBench)
-**🛠️ Agent Development Workbench**
+## 3. Repository Assessments
 
-WorkBench provides a complete development environment for building, testing, and deploying AI agents. It features an intuitive interface for agent design and powerful debugging tools.
+Quick reference for choosing what to use and when.
 
-**Key Features:**
-- Visual agent builder with drag-and-drop interface
-- Real-time debugging and profiling
-- Integrated testing suite
-- One-click deployment to cloud platforms
-- Agent performance analytics
+| Repository | Learning | Production | Security | Best For |
+|------------|----------|------------|----------|----------|
+| `ClawWork` | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | 🛡️ Medium | Multi-modal agents, enterprise |
+| `WorkBench` | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | 🛡️ Medium | Visual learning, prototyping |
+| `bananalyzer` | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | 🛡️ High | Production monitoring, QA |
+| `benchmark-compendium` | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | 🛡️ High | Pre-deployment validation |
+| `agent-evaluation` | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | 🛡️ High | Research, tool selection |
+| `500-AI-Agents-Projects` | ⭐⭐⭐⭐⭐ | ⭐⭐ | 🛡️ Low | Learning by example |
+| `awesome-ai-agents` | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | 🛡️ Medium | Overview, stack planning |
 
-**Use Cases:**
-- Rapid prototyping of AI agents
-- Educational purposes and learning
-- Team collaboration on agent development
-- Production agent management
+### When to Use What
 
-**Tech Stack:**
-- React + TypeScript frontend
-- Python backend
-- Docker containers
-- Kubernetes deployment
+- **Starting out** → `awesome-ai-agents` + `500-AI-Agents-Projects` + `WorkBench`
+- **Building production** → `ClawWork` or `LangGraph` + `benchmark-compendium` + `bananalyzer`
+- **Evaluating/researching** → `benchmark-compendium` + `agent-evaluation`
+- **Security-sensitive** → `bananalyzer` (read-only), `benchmark-compendium` (no external deps)
 
-**⭐ Stars:** 890+ | **🍴 Forks:** 120+ | **📅 Updated:** Bi-weekly
+### Security Notes
 
----
-
-#### [reworkd/bananalyzer](https://github.com/reworkd/bananalyzer)
-**🍌 Agent Behavior Analysis Tool**
-
-Bananalyzer is a specialized tool for analyzing and understanding AI agent behavior patterns. It provides deep insights into decision-making processes and helps optimize agent performance.
-
-**Key Features:**
-- Behavioral pattern recognition
-- Decision tree visualization
-- Performance bottleneck identification
-- A/B testing framework for agents
-- Automated optimization suggestions
-
-**Use Cases:**
-- Agent performance optimization
-- Behavior debugging and troubleshooting
-- Research on agent decision-making
-- Quality assurance for production agents
-
-**Tech Stack:**
-- Python data science stack
-- Plotly for visualizations
-- MLflow for experiment tracking
-- FastAPI for API access
-
-**⭐ Stars:** 650+ | **🍴 Forks:** 95+ | **📅 Updated:** Monthly
+Before using any repo in production:
+1. Review license compatibility
+2. Audit dependencies (`pip audit`, `npm audit`)
+3. Test in a sandboxed/containerized environment first
+4. Restrict network access from agent containers
+5. Never hardcode API keys — use environment variables
 
 ---
 
-### 📊 Evaluation & Benchmarking Repositories
+## 4. Learning Path
 
-#### [philschmid/ai-agent-benchmark-compendium](https://github.com/philschmid/ai-agent-benchmark-compendium)
-**📈 Comprehensive Agent Benchmark Suite**
+### 🌱 Stage 1 — Foundations (Month 1–3)
+- Understand what agents are: LLM + memory + tools + planning loop
+- Read **ReAct paper** — the core loop behind most agent frameworks
+- Build a basic agent with LangChain (simple QA + tool use)
+- Explore `awesome-ai-agents` and `500-AI-Agents-Projects` for patterns
 
-This repository is the definitive collection of benchmarks for evaluating AI agents across multiple dimensions. It includes standardized tests, metrics, and comparison tools.
+### 🚀 Stage 2 — RAG & Retrieval (Month 3–6)
+- Build a simple RAG pipeline: chunk → embed → store → retrieve → generate
+- Understand chunking strategies and overlap (see Section 8)
+- Understand dense vs sparse vs hybrid retrieval (see Section 7)
+- Experiment with `ParentDocumentRetriever`, `EnsembleRetriever`, re-ranking
 
-**Key Features:**
-- 50+ benchmark tests across different domains
-- Standardized evaluation metrics
-- Leaderboard system for comparing agents
-- Detailed performance reports
-- Integration with popular frameworks
+### 🏗️ Stage 3 — Production Patterns (Month 6–12)
+- Move to `LangGraph` for stateful, multi-step agent workflows
+- Add metadata filtering, self-query retrieval
+- Implement monitoring with `LangSmith` or `AgentOps`
+- Run `benchmark-compendium` before any production deployment
+- Use `bananalyzer` to detect behavior drift
 
-**Benchmark Categories:**
-- **Reasoning**: Logical inference and problem-solving
-- **Tool Usage**: Efficient tool selection and execution
-- **Communication**: Natural language understanding and generation
-- **Safety**: Ethical behavior and constraint adherence
-- **Efficiency**: Resource usage and response time
-
-**Tech Stack:**
-- Python 3.9+
-- Pandas for data handling
-- Matplotlib/Seaborn for visualization
-- Docker for reproducible environments
-
-**⭐ Stars:** 2.1k+ | **🍴 Forks:** 340+ | **📅 Updated:** Weekly
+### 🧠 Stage 4 — Advanced (12+ months)
+- Build multi-agent systems (CrewAI, AutoGen)
+- Implement Agentic RAG — agent decides when and what to retrieve
+- Explore GraphRAG for entity-rich domains
+- Contribute to open-source agent frameworks
 
 ---
 
-#### [topics/agent-evaluation](https://github.com/topics/agent-evaluation)
-**🔍 Agent Evaluation Topic Hub**
+## 5. RAG — Types & Decision Framework
 
-A curated collection of repositories focused on AI agent evaluation methodologies, tools, and research papers. This topic page aggregates the latest developments in agent assessment.
+### What is RAG?
 
-**Featured Areas:**
-- Novel evaluation metrics
-- Benchmark datasets
-- Evaluation frameworks
-- Research papers and methodologies
-- Community discussions
+**Retrieval-Augmented Generation** — instead of relying solely on the LLM's training data, you retrieve relevant documents at query time and inject them into the prompt. This grounds the output in real, current, private data.
 
-**Notable Repositories:**
-- GAIA (General AI Assistant benchmark)
-- AgentBench (Comprehensive evaluation suite)
-- EvalAI (Open evaluation platform)
-- BigCode (Code generation benchmarks)
-
-**Community Stats:**
-- **Repositories:** 850+
-- **Contributors:** 3.2k+
-- **Last Updated:** Daily
+```
+User Query
+    ↓
+Retrieve relevant chunks from knowledge base
+    ↓
+Inject chunks into LLM prompt as context
+    ↓
+LLM generates grounded answer
+```
 
 ---
 
-### 📚 Comprehensive Collections
+### RAG Types by Retrieval Strategy
 
-#### [ashishpatel26/500-AI-Agents-Projects](https://github.com/ashishpatel26/500-AI-Agents-Projects)
-**🚀 Massive Collection of AI Agent Projects**
+| Type | What It Does |
+|------|-------------|
+| **Naive RAG** | Basic pipeline: chunk → embed → retrieve top-K → generate |
+| **Advanced RAG** | Adds query rewriting, re-ranking, hybrid search before/after retrieval |
+| **Modular RAG** | Swappable modules — retriever, reranker, generator can be changed independently |
 
-An extensive curated list of 500+ AI agent projects covering various domains, frameworks, and applications. This is the ultimate resource for discovering agent implementations and ideas.
+### RAG Types by Retrieval Granularity
 
-**Categories:**
-- **Conversational Agents** (120+ projects)
-- **Task Automation Agents** (95+ projects)
-- **Creative Agents** (80+ projects)
-- **Research Agents** (75+ projects)
-- **Multi-Agent Systems** (65+ projects)
-- **Domain-Specific Agents** (65+ projects)
+| Type | Granularity |
+|------|------------|
+| **Chunk-based RAG** | Fixed or semantic text chunks |
+| **Sentence-level RAG** | Finer granularity for precision |
+| **Document-level RAG** | Full document retrieval |
 
-**Featured Projects:**
-- AutoGPT variants and improvements
-- Custom LangChain agents
-- OpenAI function calling examples
-- Autonomous web scraping agents
-- Code generation and debugging agents
+### RAG Types by Index/Search
 
-**Project Quality Metrics:**
-- Active maintenance (last 6 months)
-- Documentation completeness
-- Community engagement
-- Code quality standards
+| Type | How It Retrieves |
+|------|-----------------|
+| **Dense RAG** | Vector similarity search (embeddings) |
+| **Sparse RAG** | Keyword-based (BM25, TF-IDF) |
+| **Hybrid RAG** | Combines dense + sparse |
 
-**⭐ Stars:** 15k+ | **🍴 Forks:** 2.8k+ | **📅 Updated:** Weekly
+### RAG Types by Architecture
 
----
+| Type | Behavior |
+|------|---------|
+| **Single-hop RAG** | One retrieval step per query |
+| **Multi-hop RAG** | Iterative retrieval; each step informs the next |
+| **Agentic RAG** | LLM agent decides when and what to retrieve |
+| **Self-RAG** | Model critiques its own retrieval and output using special tokens |
+| **Corrective RAG (CRAG)** | Evaluates retrieved docs; falls back to web search if low quality |
+| **Graph RAG** | Retrieves from a knowledge graph, not a flat vector store |
 
-#### [slavakurilyak/awesome-ai-agents](https://github.com/slavakurilyak/awesome-ai-agents)
-**⭐ Awesome AI Agents List**
+### RAG Types by Knowledge Source
 
-A carefully curated list of awesome AI agent frameworks, tools, papers, and resources. This repository follows the "awesome" standard for quality and organization.
-
-**Sections:**
-- **Frameworks & Libraries**
-- **Tools & Platforms**
-- **Research Papers**
-- **Tutorials & Guides**
-- **Datasets & Benchmarks**
-- **Community Projects**
-
-**Highlights:**
-- In-depth reviews of each resource
-- Difficulty ratings for beginners
-- Integration compatibility matrix
-- Performance comparisons
-- Community feedback summaries
-
-**Quality Criteria:**
-- Active development
-- Good documentation
-- Community adoption
-- Innovative approaches
-- Production readiness
-
-**⭐ Stars:** 8.5k+ | **🍴 Forks:** 1.2k+ | **📅 Updated:** Bi-weekly
+| Type | Source |
+|------|--------|
+| **Local RAG** | Private/local document stores |
+| **Web RAG** | Real-time web retrieval |
+| **Structured RAG** | Databases/tables via Text-to-SQL |
+| **Multimodal RAG** | Images, audio, video alongside text |
 
 ---
 
-### 🏢 Enterprise & Production
-
-#### Production-Ready Agent Systems
-
-| Repository | Focus | Production Features |
-|-------------|-------|---------------------|
-| **microsoft/autogen** | Multi-agent conversations | Scalable deployment, monitoring |
-| **langchain-ai/langgraph** | Agent workflows | Persistence, error handling |
-| **openai/swarm** | Lightweight agents | Fast inference, low latency |
-| **phidata/phidata** | Structured agents | Type safety, validation |
-
-#### Deployment & Operations
-
-- **Kubernetes Agent Deployments**: Scalable agent infrastructure
-- **Docker Agent Containers**: Reproducible environments
-- **Monitoring Solutions**: Agent performance tracking
-- **CI/CD for Agents**: Automated testing and deployment
-
----
-
-## 🎯 How to Choose the Right Repository
-
-### For Beginners
-
-1. **Start with**: `awesome-ai-agents` for overview
-2. **Learn from**: `500-AI-Agents-Projects` examples
-3. **Use**: `WorkBench` for visual development
-
-### For Researchers
-
-1. **Benchmark with**: `ai-agent-benchmark-compendium`
-2. **Explore**: `agent-evaluation` topic
-3. **Analyze with**: `bananalyzer`
-
-### For Production
-
-1. **Build with**: `ClawWork` for complex systems
-2. **Deploy**: Production-ready frameworks
-3. **Monitor**: AgentOps and analytics tools
-
----
-
-## 🎯 Repository Value Assessment & Security Analysis
-
-### 📊 Overall Impact Rating System
-
-**Rating Scale:** ⭐ (1-5 stars)
-- **⭐⭐⭐⭐⭐ Exceptional** - Industry-leading, must-use
-- **⭐⭐⭐⭐ Excellent** - Highly recommended, production-ready
-- **⭐⭐⭐ Good** - Solid choice, specific use cases
-- **⭐⭐ Fair** - Limited scope, niche applications
-- **⭐ Poor** - Experimental, high risk
-
-### 🔍 Security Assessment Framework
-
-**Security Levels:** 🛡️ (High/Medium/Low)
-- **🛡️ High** - Regular security audits, enterprise-grade
-- **🛡️ Medium** - Basic security practices, community reviewed
-- **🛡️ Low** - Experimental, limited security considerations
-
----
-
-### 🏆 Featured Agent Frameworks
-
-#### [HKUDS/ClawWork](https://github.com/HKUDS/ClawWork)
-**🔧 Multi-Modal AI Agent Framework**
-
-**Value Assessment:**
-- **Learning Value:** ⭐⭐⭐⭐⭐ - Excellent for understanding multi-modal agent architecture
-- **Production Use:** ⭐⭐⭐⭐ - Production-ready with enterprise features
-- **Innovation:** ⭐⭐⭐⭐⭐ - Cutting-edge multi-modal capabilities
-- **Community Support:** ⭐⭐⭐ - Growing community, academic backing
-
-**Security Analysis:**
-- **Security Level:** 🛡️ Medium
-- **Strengths:** Input validation, sandboxed tool execution
-- **Considerations:** Third-party tool integrations need review
-- **Best For:** Research teams, enterprise applications with security review
-
-**Practical Use Cases:**
-- **Research Assistant:** Analyze papers, extract insights, generate summaries
-- **Creative Studio:** Generate and analyze multimedia content
-- **Data Science Team:** Automated data analysis with visualization
-- **Customer Support:** Handle complex multi-format customer queries
-
-**ROI Potential:** High - Reduces development time by 60-70% for multi-modal projects
-
----
-
-#### [olly-styles/WorkBench](https://github.com/olly-styles/WorkBench)
-**🛠️ Agent Development Workbench**
-
-**Value Assessment:**
-- **Learning Value:** ⭐⭐⭐⭐⭐ - Perfect for beginners, visual learning
-- **Production Use:** ⭐⭐⭐ - Good for prototyping, limited for scale
-- **Innovation:** ⭐⭐⭐⭐ - Novel visual approach to agent building
-- **Community Support:** ⭐⭐⭐⭐ - Active development, good documentation
-
-**Security Analysis:**
-- **Security Level:** 🛡️ Medium
-- **Strengths:** Containerized execution, role-based access
-- **Considerations:** Web-based interface needs security hardening
-- **Best For:** Educational environments, rapid prototyping
-
-**Practical Use Cases:**
-- **Team Training:** Onboard new developers to AI agent concepts
-- **Startup MVPs:** Quickly validate agent ideas before full development
-- **Educational Institutions:** Teach AI agent development visually
-- **Consulting:** Demonstrate agent capabilities to clients
-
-**ROI Potential:** Medium - Accelerates learning and prototyping by 40-50%
-
----
-
-#### [reworkd/bananalyzer](https://github.com/reworkd/bananalyzer)
-**🍌 Agent Behavior Analysis Tool**
-
-**Value Assessment:**
-- **Learning Value:** ⭐⭐⭐⭐ - Deep insights into agent behavior patterns
-- **Production Use:** ⭐⭐⭐⭐ - Essential for production agent monitoring
-- **Innovation:** ⭐⭐⭐⭐⭐ - Unique behavioral analysis approach
-- **Community Support:** ⭐⭐⭐ - Niche but dedicated user base
-
-**Security Analysis:**
-- **Security Level:** 🛡️ High
-- **Strengths:** Read-only analysis, no code execution, encrypted data
-- **Considerations:** Data privacy compliance needed for sensitive logs
-- **Best For:** Production monitoring, compliance teams
-
-**Practical Use Cases:**
-- **Production Monitoring:** Detect anomalous agent behavior in real-time
-- **Quality Assurance:** Validate agent responses before deployment
-- **Compliance Reporting:** Generate audit trails for regulated industries
-- **Performance Optimization:** Identify bottlenecks and improvement areas
-
-**ROI Potential:** High - Prevents costly production issues, improves agent reliability
-
----
-
-### 📊 Evaluation & Benchmarking Repositories
-
-#### [philschmid/ai-agent-benchmark-compendium](https://github.com/philschmid/ai-agent-benchmark-compendium)
-**📈 Comprehensive Agent Benchmark Suite**
-
-**Value Assessment:**
-- **Learning Value:** ⭐⭐⭐⭐⭐ - Industry standard for evaluation
-- **Production Use:** ⭐⭐⭐⭐⭐ - Critical for production validation
-- **Innovation:** ⭐⭐⭐⭐ - Comprehensive but established methodology
-- **Community Support:** ⭐⭐⭐⭐⭐ - Widely adopted, actively maintained
-
-**Security Analysis:**
-- **Security Level:** 🛡️ High
-- **Strengths:** Standardized tests, no external dependencies, reproducible
-- **Considerations:** Test data may need sanitization for sensitive domains
-- **Best For:** All production AI agent deployments
-
-**Practical Use Cases:**
-- **Pre-deployment Validation:** Ensure agents meet quality standards
-- **Competitive Analysis:** Compare agent performance against benchmarks
-- **Regulatory Compliance:** Demonstrate agent reliability for audits
-- **Research:** Standardized evaluation for academic papers
-
-**ROI Potential:** Very High - Prevents production failures, ensures quality
-
----
-
-#### [topics/agent-evaluation](https://github.com/topics/agent-evaluation)
-**🔍 Agent Evaluation Topic Hub**
-
-**Value Assessment:**
-- **Learning Value:** ⭐⭐⭐⭐⭐ - Comprehensive overview of evaluation landscape
-- **Production Use:** ⭐⭐⭐ - Reference for selecting evaluation tools
-- **Innovation:** ⭐⭐⭐ - Aggregator rather than innovator
-- **Community Support:** ⭐⭐⭐⭐⭐ - Community-driven, constantly updated
-
-**Security Analysis:**
-- **Security Level:** 🛡️ High
-- **Strengths:** Link aggregation, no code execution
-- **Considerations:** External links may lead to unvetted repositories
-- **Best For:** Research, evaluation tool selection
-
-**Practical Use Cases:**
-- **Research Planning:** Discover latest evaluation methodologies
-- **Tool Selection:** Find appropriate evaluation frameworks
-- **Academic Work:** Comprehensive literature review
-- **Team Training:** Understand evaluation landscape
-
-**ROI Potential:** Medium - Saves research time, informs tool selection
-
----
-
-### 📚 Comprehensive Collections
-
-#### [ashishpatel26/500-AI-Agents-Projects](https://github.com/ashishpatel26/500-AI-Agents-Projects)
-**🚀 Massive Collection of AI Agent Projects**
-
-**Value Assessment:**
-- **Learning Value:** ⭐⭐⭐⭐⭐ - Unmatched variety of examples
-- **Production Use:** ⭐⭐ - Reference material, not production-ready
-- **Innovation:** ⭐⭐⭐ - Curation rather than innovation
-- **Community Support:** ⭐⭐⭐⭐⭐ - Massive community, frequent updates
-
-**Security Analysis:**
-- **Security Level:** 🛡️ Low
-- **Strengths:** Community vetted, issue tracking
-- **Considerations:** Mixed quality, some projects may have security issues
-- **Best For:** Learning, inspiration, code examples
-
-**Practical Use Cases:**
-- **Skill Development:** Study diverse agent implementations
-- **Problem Solving:** Find solutions for specific agent challenges
-- **Inspiration:** Discover new approaches and patterns
-- **Team Training:** Build internal training curriculum
-
-**ROI Potential:** High - Accelerates learning, provides proven patterns
-
----
-
-#### [slavakurilyak/awesome-ai-agents](https://github.com/slavakurilyak/awesome-ai-agents)
-**⭐ Awesome AI Agents List**
-
-**Value Assessment:**
-- **Learning Value:** ⭐⭐⭐⭐⭐ - Curated quality, excellent organization
-- **Production Use:** ⭐⭐⭐⭐ - Reliable reference for tool selection
-- **Innovation:** ⭐⭐⭐ - Curation and organization
-- **Community Support:** ⭐⭐⭐⭐ - Strong curation standards
-
-**Security Analysis:**
-- **Security Level:** 🛡️ Medium
-- **Strengths:** Vetted resources, quality standards
-- **Considerations:** External links require individual security review
-- **Best For:** Tool selection, learning paths
-
-**Practical Use Cases:**
-- **Technology Stack Planning:** Select appropriate frameworks
-- **Team Onboarding:** Provide curated learning resources
-- **Architecture Decisions**: Evaluate different approaches
-- **Continuous Learning**: Stay updated with quality resources
-
-**ROI Potential:** High - Reduces research time, improves decision quality
-
----
-
-## 🎯 Strategic Recommendations
-
-### 🚀 For Maximum Learning Impact
-
-1. **Start Here:** `awesome-ai-agents` (⭐⭐⭐⭐⭐) - Get curated overview
-2. **Practice:** `500-AI-Agents-Projects` (⭐⭐⭐⭐⭐) - Learn from examples
-3. **Visual Learning:** `WorkBench` (⭐⭐⭐⭐⭐) - Build intuition
-4. **Benchmark Understanding:** `ai-agent-benchmark-compendium` (⭐⭐⭐⭐⭐)
-
-### 🏭 For Production Deployment
-
-1. **Foundation:** `ClawWork` (⭐⭐⭐⭐) - Production-ready framework
-2. **Quality Assurance:** `ai-agent-benchmark-compendium` (⭐⭐⭐⭐⭐) - Validation
-3. **Monitoring:** `bananalyzer` (⭐⭐⭐⭐) - Production observability
-4. **Continuous Improvement:** `agent-evaluation` (⭐⭐⭐) - Stay current
-
-### 🔒 Security-First Approach
-
-**High Security (🛡️):**
-- `ai-agent-benchmark-compendium` - Standardized, safe testing
-- `bananalyzer` - Read-only analysis, enterprise-ready
-- `agent-evaluation` - Link aggregation, minimal risk
-
-**Medium Security (🛡️):**
-- `ClawWork` - Production features, needs review
-- `WorkBench` - Containerized, web interface considerations
-- `awesome-ai-agents` - Vetted but external links
-
-**Low Security (🛡️):**
-- `500-AI-Agents-Projects` - Mixed quality, requires individual review
-
----
-
-## 💰 Expected ROI & Time Savings
-
-| Repository Type | Learning Time Saved | Development Acceleration | Risk Reduction |
-|----------------|-------------------|-------------------------|----------------|
-| **Frameworks** | 40-60% | 60-70% | Medium |
-| **Evaluation Tools** | 30-40% | 20-30% | High |
-| **Collections** | 70-80% | 30-40% | Low-Medium |
-| **Analysis Tools** | 20-30% | 10-20% | High |
-
-**Total Potential ROI:** 200-300% improvement in AI agent development lifecycle
-
----
-
-## 🛡️ Security Best Practices
-
-### Before Using Any Repository:
-
-1. **License Review** - Check compatibility with your use case
-2. **Security Audit** - Review dependencies and known vulnerabilities
-3. **Code Review** - Assess code quality and security practices
-4. **Community Health** - Check maintenance status and issue response
-5. **Isolation** - Test in sandboxed environments first
-
-### For Production Deployment:
-
-1. **Containerization** - Use Docker for isolation
-2. **Network Security** - Restrict external API calls
-3. **Data Privacy** - Ensure compliance with regulations
-4. **Monitoring** - Implement security monitoring and logging
-5. **Regular Updates** - Keep dependencies updated
-
----
-
-## 🎓 Learning Path Recommendations
-
-### 🌱 Beginner (0-6 months)
-1. **Month 1-2:** `awesome-ai-agents` + `WorkBench`
-2. **Month 3-4:** `500-AI-Agents-Projects` examples
-3. **Month 5-6:** `ai-agent-benchmark-compendium` for understanding quality
-
-### 🚀 Intermediate (6-18 months)
-1. **Month 7-9:** `ClawWork` for production patterns
-2. **Month 10-12:** `bananalyzer` for optimization
-3. **Month 13-18:** Contribute to open-source agent projects
-
-### 🏆 Advanced (18+ months)
-1. **Framework Development:** Build custom agent frameworks
-2. **Research Contribution:** Advance evaluation methodologies
-3. **Production Architecture:** Design enterprise agent systems
-
----
-
-## 🤝 Contributing
-
-We welcome contributions to this repository! Here's how you can help:
-
-### Adding New Repositories
-
-1. Fork the repository
-2. Add your repository with proper documentation
-3. Include:
-   - Clear description
-   - Key features
-   - Use cases
-   - Tech stack
-   - Repository stats
-4. Submit a pull request
-
-### Repository Requirements
-
-- **Active Development**: Updated within last 6 months
-- **Documentation**: Clear README and examples
-- **Quality**: Well-structured, tested code
-- **License**: Open source with permissive license
-- **Community**: Active issues and discussions
-
-### Review Process
-
-1. Automated checks for links and formatting
-2. Community review for relevance and quality
-3. Maintainer approval for inclusion
-4. Regular updates and maintenance
-
----
-
-## Types of RAG (Retrieval-Augmented Generation)
-
-Here are the main types:
-
-### By Retrieval Strategy
-- **Naive RAG** – Basic retrieve-then-generate pipeline; chunk docs, embed, retrieve top-k, generate
-- **Advanced RAG** – Adds pre/post retrieval steps: query rewriting, re-ranking, hybrid search
-- **Modular RAG** – Composable modules (retriever, reranker, generator) that can be swapped independently
-
-### By Retrieval Granularity
-- **Chunk-based RAG** – Fixed or semantic text chunks
-- **Sentence-level RAG** – Finer granularity for precision
-- **Document-level RAG** – Retrieves full documents
-
-### By Index/Search Type
-- **Dense RAG** – Vector similarity search (embeddings)
-- **Sparse RAG** – Keyword-based (BM25, TF-IDF)
-- **Hybrid RAG** – Combines dense + sparse retrieval
-
-### By Architecture
-- **Single-hop RAG** – One retrieval step per query
-- **Multi-hop RAG** – Iterative retrieval; each step informs the next (e.g., for complex reasoning)
-- **Agentic RAG** – LLM agent decides when and what to retrieve dynamically
-- **Self-RAG** – Model learns to critique and selectively retrieve using special tokens
-- **Corrective RAG (CRAG)** – Evaluates retrieved docs and falls back to web search if low quality
-- **Graph RAG** – Retrieves from a knowledge graph instead of flat vector store
-
-### By Knowledge Source
-- **Local RAG** – Private/local document stores
-- **Web RAG** – Real-time web retrieval
-- **Structured RAG** – Retrieves from databases/tables (Text-to-SQL + RAG)
-- **Multimodal RAG** – Retrieves images, audio, video alongside text
-
----
-
-## Decision Framework: Which RAG to Use
-
-Think of it as a series of questions:
-
-**1. How complex is your query?**
-- Simple, single-fact questions → Naive or Advanced RAG
-- Multi-step reasoning (e.g., "Compare X from doc A with Y from doc B") → Multi-hop RAG
+### Decision Framework — Which RAG to Use
+
+**Step 1 — How complex is your query?**
+- Single-fact questions → Naive or Advanced RAG
+- Multi-step reasoning → Multi-hop RAG
 - Dynamic, unpredictable queries → Agentic RAG
 
-**2. What's your data source?**
+**Step 2 — What's your data source?**
 - Private docs/files → Local RAG (dense or hybrid)
-- Need fresh/real-time info → Web RAG
+- Real-time info needed → Web RAG
 - Structured DB/tables → Structured RAG (Text-to-SQL)
-- Entities with relationships (org charts, knowledge bases) → Graph RAG
+- Entities with relationships → Graph RAG
 - Images + text → Multimodal RAG
 
-**3. How important is retrieval quality?**
-- Good enough → Naive RAG (fast, simple)
-- Need accuracy → Advanced RAG (add re-ranking, query rewriting)
-- Retrieved docs might be wrong/irrelevant → Corrective RAG (CRAG)
+**Step 3 — How critical is retrieval quality?**
+- Good enough, fast → Naive RAG
+- Need accuracy → Advanced RAG (re-ranking + query rewriting)
+- Retrieved docs might be wrong → Corrective RAG (CRAG)
 - Model should self-evaluate → Self-RAG
 
-**4. What are your constraints?**
+**Step 4 — Constraints?**
 
 | Constraint | Recommendation |
 |---|---|
-| Low latency needed | Naive RAG, Dense RAG |
-| Small team, fast prototype | Naive → Advanced RAG |
+| Low latency | Naive RAG, Dense RAG |
+| Fast prototype | Naive → Advanced RAG |
 | Keyword + semantic both matter | Hybrid RAG |
-| Production, high accuracy | Advanced or Modular RAG |
+| High accuracy, production | Advanced or Modular RAG |
 | Complex autonomous tasks | Agentic RAG |
 
-### Practical Starting Point
-
-90% of use cases start here and evolve:
+### Evolution Path (90% of use cases follow this)
 
 ```
-Naive RAG → Hybrid RAG → Advanced RAG → Agentic RAG
-(prototype)  (better recall) (better precision) (complex tasks)
+Naive RAG  →  Hybrid RAG  →  Advanced RAG  →  Agentic RAG
+(prototype)   (better recall) (better precision) (complex tasks)
 ```
 
-> Start simple, measure where it fails, then add complexity only where needed.
+> Start simple. Measure where it fails. Add complexity only where needed.
 
 ---
 
-## � Known & Verifiable RAG Variants
+## 6. RAG — Advanced & Experimental Variants
 
-### Hybrid Multilingual RAG
-RAG applied across multiple languages; retriever handles cross-lingual embeddings (e.g., mBERT, LaBSE) so queries in one language retrieve docs in another. Real and in active use.
+### Known & Production-Viable Variants
 
-### HiRAG / HiFi-RAG
-"Hierarchical" RAG variants that chunk documents at multiple granularity levels (sentence → paragraph → section) and retrieve at the appropriate level. Some papers use "HiFi" to mean high-fidelity retrieval with minimal noise.
+#### Hybrid Multilingual RAG
+RAG across multiple languages using cross-lingual embeddings (mBERT, LaBSE). Query in one language retrieves docs in another. **In active use.**
 
-### Bidirectional RAG
-Retrieval that works both forward (query → docs) and backward (docs → query verification). Used for answer verification — checks if retrieved docs actually support the generated answer.
+#### HiRAG / HiFi-RAG
+Hierarchical RAG — chunks at multiple granularity levels (sentence → paragraph → section), retrieves at the appropriate level. HiFi = high-fidelity, minimal noise retrieval.
 
-### Graph-RAG / Graph-01
-Microsoft's GraphRAG is well-established. "Graph-01" likely refers to a specific paper variant using graph traversal for multi-hop reasoning.
+#### Bidirectional RAG
+Forward retrieval (query → docs) + backward verification (docs → does this support the answer?). Used for answer verification.
 
-### Mega-RAG
-Refers to scaling RAG to very large corpora (millions of docs) with approximate nearest neighbor (ANN) indexes like FAISS/ScaNN at scale.
+#### Graph-RAG / Graph-01
+Microsoft's GraphRAG — community-based knowledge graph retrieval. Graph-01 = specific variant using graph traversal for multi-hop reasoning.
 
----
-
-## 🚀 Advanced RAG Variants – Architecture Notes
-
-This section summarizes emerging Retrieval-Augmented Generation (RAG) architectures and research-driven extensions beyond standard vector-based RAG.
-
-### 1️⃣ Classic RAG (Baseline)
-
-**Concept:** Retrieve relevant documents from a knowledge base and inject them into the LLM prompt for grounded generation.
-
-**Pipeline:**
-```
-User Query
-   ↓
-Vector Embedding
-   ↓
-Similarity Search (Vector DB)
-   ↓
-Top-K Documents
-   ↓
-LLM
-```
-
-**Use Cases:** Enterprise QA, Knowledge base chat, Documentation search
+#### Mega-RAG
+Scaling RAG to millions of docs using ANN indexes (FAISS, ScaNN). For large-scale corpora.
 
 ---
 
-### 2️⃣ Mindscape-Aware RAG
+### Research / Emerging Variants
 
+#### Classic RAG (Baseline)
+```
+User Query → Vector Embedding → Similarity Search → Top-K Docs → LLM
+```
+Use cases: Enterprise QA, knowledge base chat, documentation search.
+
+---
+
+#### Mindscape-Aware RAG
 **Focus:** Personalized retrieval using user mental models and long-term context.
 
-**Key Idea:** Retrieval adapts based on user history, behavioral patterns, goals, skill level, and emotional tone (optional).
-
-**Architecture:**
+Retrieval adapts based on: user history, behavioral patterns, goals, skill level, emotional tone.
 ```
-User Query
-   ↓
-User State Model (Profile + Memory)
-   ↓
-Adaptive Retrieval
-   ↓
-LLM
+User Query → User State Model (Profile + Memory) → Adaptive Retrieval → LLM
 ```
-
-**Use Cases:** AI tutors, Personalized assistants, Strategic advisory AI
-
-**Maturity:** Research / Advanced production customization
+Use cases: AI tutors, personalized assistants, advisory AI. **Maturity: Research**
 
 ---
 
-### 3️⃣ Hypergraph Memory RAG
-
+#### Hypergraph Memory RAG
 **Focus:** Multi-entity relational retrieval using hypergraphs.
 
-**Difference from Graph RAG:**
-- Graph: Node → Edge → Node
-- Hypergraph: One relation connects multiple nodes simultaneously
+- Graph: Node → Edge → Node (pairwise)
+- Hypergraph: One relation connects **multiple nodes simultaneously**
 
-**Architecture:**
 ```
-Documents
-   ↓
-Entity Extraction
-   ↓
-Hypergraph Construction
-   ↓
-Query → Graph Traversal
-   ↓
-Relevant Subgraph → LLM
+Documents → Entity Extraction → Hypergraph Construction → Query Traversal → Relevant Subgraph → LLM
 ```
-
-**Use Cases:** Multi-hop reasoning, Surveillance intelligence, Complex business intelligence systems
-
-**Maturity:** Advanced but implementable
+Use cases: Multi-hop reasoning, surveillance intelligence, complex BI. **Maturity: Advanced but implementable**
 
 ---
 
-### 4️⃣ QuCo-RAG (Query-Context Optimization RAG)
-
+#### QuCo-RAG (Query-Context Optimization RAG)
 **Focus:** Intelligent query rewriting + context compression.
-
-**Pipeline:**
 ```
-User Query
-   ↓
-Query Rewriter (LLM)
-   ↓
-Multi-Step Retrieval
-   ↓
-Context Reranking / Compression
-   ↓
-LLM
+User Query → Query Rewriter (LLM) → Multi-Step Retrieval → Context Reranking/Compression → LLM
 ```
-
-**Benefits:** Better long-document QA, Reduced hallucination, Improved precision
-
-**Maturity:** Production-ready
+Benefits: Better long-document QA, reduced hallucination, improved precision. **Maturity: Production-ready**
 
 ---
 
-### 5️⃣ Affordance RAG
-
-**Focus:** Retrieve not only knowledge but actionable capabilities.
-
-**Core Idea:** Combine knowledge retrieval, tool selection, and API invocation.
-
-**Pipeline:**
+#### Affordance RAG
+**Focus:** Retrieve not just knowledge but actionable capabilities — combines knowledge retrieval + tool selection + API invocation.
 ```
-User Intent
-   ↓
-Retrieve Relevant Knowledge
-   ↓
-Retrieve Available Tools
-   ↓
-LLM + Tool Execution
+User Intent → Retrieve Knowledge → Retrieve Available Tools → LLM + Tool Execution
 ```
-
-**Use Cases:** DevOps copilots, AI workflow agents, Autonomous assistants
-
-**Maturity:** Production-ready (with tool calling)
+Use cases: DevOps copilots, AI workflow agents, autonomous assistants. **Maturity: Production-ready (with tool calling)**
 
 ---
 
-### 6️⃣ SignRAG
-
+#### SignRAG
 **Focus:** Retrieval for sign-language and gesture-based systems.
-
-**Input Type:** Sign video, Motion capture, Gloss annotations
-
-**Pipeline:**
 ```
-Sign Video
-   ↓
-Pose + Gesture Encoder
-   ↓
-Embedding Search
-   ↓
-Retrieve Similar Sequences
-   ↓
-Multimodal LLM
+Sign Video → Pose + Gesture Encoder → Embedding Search → Retrieve Similar Sequences → Multimodal LLM
 ```
-
-**Use Cases:** Accessibility systems, Real-time sign translation
-
-**Maturity:** Research stage
+Use cases: Accessibility systems, real-time sign translation. **Maturity: Research**
 
 ---
 
-### 7️⃣ TV-RAG (Temporal-Visual RAG)
-
-**Focus:** Time-aware video retrieval and reasoning.
-
-**Core Idea:** Retrieve relevant video segments instead of static documents.
-
-**Architecture:**
+#### TV-RAG (Temporal-Visual RAG)
+**Focus:** Time-aware video retrieval — retrieve video segments instead of static docs.
 ```
-Video Input
-   ↓
-Frame Sampling + Temporal Encoding
-   ↓
-Segment Embeddings
-   ↓
-Similarity Search
-   ↓
-LLM Reasoning
+Video Input → Frame Sampling + Temporal Encoding → Segment Embeddings → Similarity Search → LLM
 ```
-
-**Use Cases:** CCTV analysis, Forensic search, Sports analytics, Robotics
-
-**Maturity:** Emerging but implementable
+Use cases: CCTV analysis, forensic search, sports analytics. **Maturity: Emerging**
 
 ---
 
-### 8️⃣ RAGPart (Partial Context RAG)
-
-**Focus:** Pass only the most relevant parts of retrieved documents.
-
-**Pipeline:**
+#### RAGPart (Partial Context RAG)
+**Focus:** Pass only the most relevant parts of retrieved documents to reduce token cost.
 ```
-Retrieve Documents
-   ↓
-Fine-Grained Chunk Scoring
-   ↓
-Select High-Importance Segments
-   ↓
-LLM
+Retrieve Documents → Fine-Grained Chunk Scoring → Select High-Importance Segments → LLM
 ```
-
-**Benefits:** Lower token cost, Faster inference, Better signal-to-noise ratio
-
-**Maturity:** Production-ready
+Benefits: Lower token cost, faster inference, better signal-to-noise. **Maturity: Production-ready**
 
 ---
 
-### 9️⃣ RAGMask
-
-**Focus:** Token-level masking of irrelevant content.
-
-**Concept:** Instead of trimming chunks, mask low-relevance spans before LLM processing.
-
+#### RAGMask
+**Focus:** Token-level masking of irrelevant content instead of trimming chunks.
 ```
-Original:       Full paragraph
-After Masking:  Important sections visible, rest masked
+Original:      Full paragraph
+After Masking: Important sections visible, rest masked → LLM
 ```
-
-**Benefits:** Better attention control, Reduced distraction, Efficiency improvements
-
-**Maturity:** Research-level (requires model-level integration)
+Benefits: Better attention control, reduced distraction. **Maturity: Research (requires model-level integration)**
 
 ---
 
-### 🔟 Evolution Overview
+### Evolution Overview
 
 | Variant | Focus | Maturity |
-|---|---|---|
+|---------|-------|----------|
 | Classic RAG | Vector similarity | Production |
+| Hybrid Multilingual RAG | Cross-language retrieval | Production |
+| HiRAG / HiFi-RAG | Hierarchical granularity | Production |
+| Bidirectional RAG | Answer verification | Production |
+| Graph-RAG | Entity/relationship retrieval | Production |
+| QuCo-RAG | Query optimization | Production |
+| Affordance RAG | Tool + knowledge retrieval | Production |
+| RAGPart | Context efficiency | Production |
 | Mindscape-Aware RAG | Personalization | Advanced |
 | Hypergraph Memory RAG | Multi-entity reasoning | Advanced |
-| QuCo-RAG | Query optimization | Production |
-| Affordance RAG | Tool integration | Production |
+| TV-RAG | Video + temporal | Emerging |
 | SignRAG | Gesture retrieval | Research |
-| TV-RAG | Video + time reasoning | Emerging |
-| RAGPart | Context efficiency | Production |
 | RAGMask | Token-level filtering | Research |
 
----
+### Key Insight
 
-### 🧠 Unified Insight
-
-Most advanced RAG systems in 2026 combine:
-
-- **Hybrid Retrieval** (Vector + Graph)
-- **Query Rewriting**
-- **Context Compression**
-- **Tool-Augmented Agents**
-- **Multimodal Embeddings**
-
-> The real advantage is not in naming the variant — it's in combining the right retrieval strategy for the domain.
+> Most advanced RAG systems in 2026 combine: **Hybrid Retrieval** + **Query Rewriting** + **Context Compression** + **Tool-Augmented Agents** + **Multimodal Embeddings**.
+> The real advantage isn't the name — it's combining the right retrieval strategy for the domain.
 
 ---
 
-## �📄 License
+## 7. Retrieval Methods
 
-This repository is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
----
-
-## 🙏 Acknowledgments
-
-- All the repository authors and maintainers
-- The AI agent community for continuous innovation
-- Contributors who help maintain this curated list
-- Open source organizations supporting AI research
+Retrieval is the core of any RAG system. The method determines what gets found, how fast, and how accurate the context fed to the LLM is.
 
 ---
 
-**⭐ If you find this repository helpful, please give it a star!**
+### 1. Dense Retrieval (Vector Search)
 
-**🔄 Last Updated: February 2026**
+**How it works:** Documents and queries are encoded into dense vectors using an embedding model. Retrieval is done via cosine similarity or dot product between the query vector and stored document vectors.
+
+**Pipeline:**
+```
+Query
+  ↓
+Embedding Model (e.g., text-embedding-ada-002, BGE, E5)
+  ↓
+Query Vector
+  ↓
+Approximate Nearest Neighbor Search (ANN)
+  ↓
+Top-K Most Similar Chunks
+```
+
+**Index Types:**
+| Index | Algorithm | Trade-off |
+|---|---|---|
+| FAISS Flat | Exact brute-force | Slowest, most accurate |
+| FAISS IVF | Inverted file index | Fast, slight accuracy drop |
+| HNSW | Hierarchical Navigable Small World | Very fast, high recall |
+| ScaNN | Google's ANN | Best for large-scale |
+
+**Best for:** Semantic similarity, paraphrase matching, conceptual queries
+**Weakness:** Poor on exact keyword matches (e.g., product codes, IDs, names)
 
 ---
 
-*This repository is part of the broader AI agents ecosystem and aims to accelerate development and adoption of intelligent autonomous systems.*
+### 2. Sparse Retrieval (Keyword Search)
+
+**How it works:** Documents are indexed using term frequency statistics. Retrieval scores documents based on term overlap between query and document.
+
+**Algorithms:**
+| Algorithm | Description |
+|---|---|
+| **BM25** | Best Match 25 — gold standard sparse retriever; scores by TF-IDF with length normalization |
+| **TF-IDF** | Term Frequency–Inverse Document Frequency; classic IR baseline |
+| **SPLADE** | Sparse Learned Encoder; learned sparse representations via transformer |
+| **BM25+** | BM25 variant with lower-bounded term frequency weighting |
+
+**Pipeline:**
+```
+Query
+  ↓
+Tokenize + Stem / Lemmatize
+  ↓
+Term Matching against Inverted Index
+  ↓
+BM25 Score per Document
+  ↓
+Top-K Documents
+```
+
+**Best for:** Exact keyword matches, named entities, product codes, rare terms
+**Weakness:** Misses semantic synonyms (e.g., "car" vs "automobile")
+
+---
+
+### 3. Hybrid Retrieval (Dense + Sparse)
+
+**How it works:** Runs both dense and sparse retrieval independently, then merges results using a fusion algorithm.
+
+**Fusion Methods:**
+
+**Reciprocal Rank Fusion (RRF)** — Most common:
+```
+RRF Score = Σ 1 / (k + rank_i)
+```
+Each document's rank from each retriever is combined. `k` is typically 60.
+
+**Linear Score Fusion:**
+```
+Final Score = α × Dense Score + (1 - α) × Sparse Score
+```
+`α` is tuned based on domain (typically 0.5–0.7 for semantic-heavy domains).
+
+**Pipeline:**
+```
+Query
+  ├── Dense Retriever → Top-K₁ with scores
+  └── Sparse Retriever → Top-K₂ with scores
+             ↓
+        Fusion (RRF or Linear)
+             ↓
+        Re-ranked Merged List
+             ↓
+        Top-K Final Results
+```
+
+**Best for:** Production RAG — captures both semantic and exact match signals
+**Tools:** LangChain `EnsembleRetriever`, Weaviate hybrid search, Elasticsearch hybrid
+
+---
+
+### 4. Re-Ranking (Post-Retrieval)
+
+**How it works:** After initial retrieval (dense/sparse/hybrid), a cross-encoder re-ranks the top-K results by scoring each (query, chunk) pair jointly.
+
+**Bi-encoder vs Cross-encoder:**
+| | Bi-Encoder | Cross-Encoder |
+|---|---|---|
+| Input | Query & doc separately | Query + doc together |
+| Speed | Fast (pre-computed) | Slow (runtime) |
+| Accuracy | Good | Superior |
+| Use | Initial retrieval | Re-ranking top-K |
+
+**Pipeline:**
+```
+Initial Top-K Chunks (from any retriever)
+  ↓
+Cross-Encoder: score(query, chunk_i) for each i
+  ↓
+Re-sorted by cross-encoder score
+  ↓
+Top-N passed to LLM (N < K)
+```
+
+**Models:** `cross-encoder/ms-marco-MiniLM-L-6-v2`, `Cohere Rerank`, `BGE-Reranker`
+
+**Best for:** Any production RAG where precision matters more than latency
+
+---
+
+### 5. Multi-Vector Retrieval
+
+**How it works:** Each document is represented by multiple vectors (e.g., summary vector + chunk vectors). Query is matched against all vectors; the parent document is retrieved.
+
+**Variants:**
+- **Parent-Child Retrieval** — Embed small chunks, retrieve full parent document
+- **Hypothetical Document Embeddings (HyDE)** — LLM generates a hypothetical answer → embed it → use it to retrieve real docs
+- **Summary + Chunk** — Store both a summary embedding and per-chunk embeddings per document
+
+**HyDE Pipeline:**
+```
+Query: "What is the return policy?"
+  ↓
+LLM generates hypothetical answer:
+  "The return policy allows 30 days..."
+  ↓
+Embed hypothetical answer
+  ↓
+Retrieve actual docs via similarity to hypothetical embedding
+  ↓
+LLM answers using retrieved real docs
+```
+
+**Best for:** Short queries that don't embed well; technical domains with jargon
+
+---
+
+### 6. Graph-Based Retrieval
+
+**How it works:** Documents are parsed into entities and relationships, stored as a knowledge graph. Retrieval traverses edges to find multi-hop relevant nodes.
+
+**Pipeline:**
+```
+Query
+  ↓
+Entity Extraction (NER)
+  ↓
+Graph Lookup (start nodes)
+  ↓
+Traversal (1-hop, 2-hop, N-hop)
+  ↓
+Subgraph → Serialized to text
+  ↓
+LLM
+```
+
+**Retrieval Strategies:**
+| Strategy | Description |
+|---|---|
+| **Entity-centric** | Start from named entity, expand neighbors |
+| **Relation-centric** | Find paths between two entities |
+| **Community-based** | GraphRAG clusters nodes; retrieve by community summary |
+| **Cypher/SPARQL query** | Natural language → graph query language |
+
+**Best for:** Entities with rich relationships (org charts, knowledge bases, legal docs, biomedical)
+
+---
+
+### 7. Contextual Compression Retrieval
+
+**How it works:** Retrieved chunks are compressed/filtered before passing to LLM — only the most relevant sentences within each chunk are kept.
+
+**Pipeline:**
+```
+Query
+  ↓
+Retrieve Top-K Chunks
+  ↓
+Compressor (LLM or extractive model)
+  → Extracts only relevant sentences per chunk
+  ↓
+Compressed context passed to LLM
+```
+
+**Compressor Types:**
+- **LLMChainExtractor** — LLM extracts relevant parts (high quality, slower)
+- **EmbeddingsFilter** — Filters sentences by embedding similarity to query (fast)
+- **DocumentCompressorPipeline** — Chains multiple compressors
+
+**Best for:** Long documents where chunks still contain much irrelevant text
+
+---
+
+### 8. Time-Aware / Temporal Retrieval
+
+**How it works:** Retrieval incorporates document timestamps as a signal — penalizes or prioritizes based on recency.
+
+**Scoring:**
+```
+Final Score = Relevance Score × Decay(time)
+Decay = e^(-λ × age_in_days)
+```
+
+**Variants:**
+- **Recency-biased** — Prefer newer documents
+- **Epoch-scoped** — Only retrieve docs within a time window
+- **Versioned retrieval** — Retrieve docs as of a specific date
+
+**Best for:** News, legal docs, product changelogs, financial reports
+
+---
+
+### 9. Metadata-Filtered Retrieval
+
+**How it works:** Vector search is augmented with structured metadata filters applied pre- or post-retrieval.
+
+**Example:**
+```python
+retriever.get_relevant_documents(
+    query="leave policy",
+    filter={"department": "HR", "year": 2024}
+)
+```
+
+**Filter Application Modes:**
+| Mode | How | Trade-off |
+|---|---|---|
+| **Pre-filter** | Filter first, then vector search within subset | Faster, may miss results |
+| **Post-filter** | Vector search first, filter results | Better recall, slower |
+| **Hybrid filter** | ANN with metadata constraints simultaneously | Best, requires vector DB support |
+
+**Supported by:** Pinecone, Weaviate, Qdrant, Chroma, Milvus
+
+**Best for:** Multi-tenant RAG, department-scoped retrieval, date-restricted search
+
+---
+
+### 10. Self-Query Retrieval
+
+**How it works:** LLM parses the natural language query into a structured query with both a semantic component and metadata filters automatically.
+
+**Pipeline:**
+```
+Query: "Find HR policies updated after 2023 about remote work"
+  ↓
+LLM Self-Query Parser
+  ↓
+Semantic: "remote work policy"
+Filter: {category: "HR", updated_after: "2023-01-01"}
+  ↓
+Vector DB query with both components
+```
+
+**Best for:** User-facing search interfaces where users write natural language but data has rich metadata
+
+---
+
+### 11. Ensemble / Multi-Retriever
+
+**How it works:** Multiple distinct retrievers (different embedding models, different indexes, different sources) run in parallel; results are merged.
+
+```
+Query
+  ├── Retriever A (Dense, local docs)
+  ├── Retriever B (BM25, policy index)
+  └── Retriever C (Graph, entity store)
+         ↓
+    Merge + Deduplicate + Rank
+         ↓
+    Final context for LLM
+```
+
+**Best for:** Agentic RAG where the agent routes across multiple knowledge sources
+
+---
+
+### Retrieval Method Comparison
+
+| Method | Semantic Match | Exact Match | Speed | Complexity | Best Use |
+|---|---|---|---|---|---|
+| Dense (Vector) | ✅ Excellent | ❌ Poor | Fast | Low | General QA |
+| Sparse (BM25) | ❌ Poor | ✅ Excellent | Very Fast | Low | Keyword search |
+| Hybrid | ✅ Good | ✅ Good | Medium | Medium | Production default |
+| Re-ranking | ✅ Excellent | ✅ Good | Slow | Medium | High-accuracy |
+| Graph | ✅ Good | ✅ Good | Medium | High | Multi-hop reasoning |
+| HyDE / Multi-vector | ✅ Excellent | ❌ Poor | Medium | High | Short/ambiguous queries |
+| Contextual Compression | ✅ Excellent | ✅ Good | Slow | Medium | Long documents |
+| Metadata Filtered | ✅ Good | ✅ Good | Fast | Low | Scoped retrieval |
+
+---
+
+## 8. Chunking & Chunk Overlap Strategies
+
+Chunking determines how documents are split before embedding. Overlap controls how much context bleeds between adjacent chunks to prevent losing context at boundaries.
+
+---
+
+### Why Overlap Matters
+
+Without overlap, a sentence split across two chunk boundaries loses its context in both:
+```
+Chunk 1: "The employee is entitled to 20 days annual leave."
+Chunk 2: "This does not include sick leave or public holidays."
+
+Query: "How many total leave days including sick leave?"
+→ Neither chunk alone answers correctly.
+```
+
+With overlap, the boundary region appears in both chunks:
+```
+Chunk 1: "...entitled to 20 days annual leave. This does not include sick leave..."
+Chunk 2: "...annual leave. This does not include sick leave or public holidays."
+→ Both chunks now carry the complete context.
+```
+
+---
+
+### 1. Fixed-Size Overlap (Token / Character)
+
+**How it works:** Split document into chunks of fixed size `N` tokens/characters. Each chunk overlaps with the previous by `O` tokens.
+
+```
+Document: [T1 T2 T3 T4 T5 T6 T7 T8 T9 T10]
+Chunk size = 5, Overlap = 2
+
+Chunk 1: [T1 T2 T3 T4 T5]
+Chunk 2:          [T4 T5 T6 T7 T8]
+Chunk 3:                   [T7 T8 T9 T10]
+```
+
+**Parameters:**
+| Parameter | Typical Range | Effect |
+|---|---|---|
+| `chunk_size` | 256–1024 tokens | Larger = more context, less precision |
+| `chunk_overlap` | 10–20% of chunk_size | Higher = better boundary coverage, more storage |
+
+**Code (LangChain):**
+```python
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=512,
+    chunk_overlap=64
+)
+```
+
+**Best for:** General-purpose documents, fast prototyping
+**Weakness:** Ignores sentence/paragraph structure; may split mid-sentence
+
+---
+
+### 2. Sentence-Level Overlap
+
+**How it works:** Split by sentence boundaries (using NLP sentence tokenizer). Overlap is measured in sentences, not tokens.
+
+```
+S1. "The policy applies to all full-time employees."
+S2. "Part-time employees are covered under Schedule B."
+S3. "Contract workers are excluded."
+S4. "All claims must be filed within 30 days."
+
+Chunk size = 2 sentences, Overlap = 1 sentence:
+Chunk 1: [S1, S2]
+Chunk 2: [S2, S3]   ← S2 repeated
+Chunk 3: [S3, S4]   ← S3 repeated
+```
+
+**Tools:** spaCy `sentencizer`, NLTK `sent_tokenize`, `spacy-sentence-bert`
+
+**Best for:** QA over structured documents (policies, contracts, reports)
+**Weakness:** Sentence tokenizers can fail on bullet points, abbreviations, enumerations
+
+---
+
+### 3. Paragraph-Level Overlap
+
+**How it works:** Split on paragraph boundaries (`\n\n`). Overlap includes the last paragraph of the previous chunk.
+
+```
+Paragraph A: "Introduction to leave policy..."
+Paragraph B: "Types of leave available..."
+Paragraph C: "Eligibility criteria..."
+
+Chunk 1: [Para A + Para B]
+Chunk 2: [Para B + Para C]  ← Para B repeated
+```
+
+**Best for:** Long-form documents where paragraphs are self-contained units (legal docs, SOWs, manuals)
+**Weakness:** Paragraph length varies wildly; some chunks may exceed token limits
+
+---
+
+### 4. Sliding Window Overlap
+
+**How it works:** A fixed window slides across the document with a step size smaller than the window. Every position in the document appears in multiple chunks.
+
+```
+Window size = 4, Step = 2:
+Window 1: [T1 T2 T3 T4]
+Window 2: [T3 T4 T5 T6]
+Window 3: [T5 T6 T7 T8]
+```
+
+**Coverage guarantee:** Every token appears in `window_size / step` chunks.
+
+**Best for:** Dense technical documents where any sentence might be critical
+**Weakness:** High redundancy → large index, slower retrieval
+
+---
+
+### 5. Semantic Chunking (No Fixed Overlap)
+
+**How it works:** Instead of fixed boundaries, detect semantic breakpoints where topic shifts occur. Split at natural topic transitions.
+
+**Algorithm:**
+```
+1. Embed each sentence
+2. Compute cosine similarity between consecutive sentences
+3. Detect drops in similarity → breakpoint
+4. Split at breakpoints
+```
+
+```
+Similarity: [0.92, 0.89, 0.91, 0.43←breakpoint, 0.88, 0.87]
+                                    ↑
+                             Split here
+```
+
+**Parameters:**
+- `breakpoint_threshold_type`: `percentile`, `standard_deviation`, `interquartile`
+- `breakpoint_threshold_amount`: e.g., 95th percentile of similarity drops
+
+**Code (LangChain):**
+```python
+from langchain_experimental.text_splitter import SemanticChunker
+from langchain_openai.embeddings import OpenAIEmbeddings
+
+splitter = SemanticChunker(
+    OpenAIEmbeddings(),
+    breakpoint_threshold_type="percentile"
+)
+```
+
+**Best for:** Mixed-topic documents; produces cleaner, more topically coherent chunks
+**Weakness:** Slower (requires embedding every sentence); no guaranteed chunk size
+
+---
+
+### 6. Recursive Character Text Splitting (Hierarchical Overlap)
+
+**How it works:** Tries to split on a priority list of separators: `["\n\n", "\n", ". ", " ", ""]`. Falls back to the next separator only if the chunk exceeds the size limit.
+
+```
+Priority: ["\n\n" → "\n" → ". " → " " → ""]
+
+Try split on "\n\n" → chunks still too large?
+  → Try split on "\n"
+    → Still too large?
+      → Try split on ". "
+        → Still too large?
+          → Split on " " (word boundary)
+```
+
+**Best for:** General-purpose default — respects natural text structure as much as possible
+**This is the LangChain default splitter**
+
+---
+
+### 7. Parent-Child Chunking (Hierarchical Retrieval)
+
+**How it works:** Two chunk sizes are created — small child chunks for precise retrieval and large parent chunks for full context. Query matches against child chunks; the parent is returned to the LLM.
+
+```
+Parent Chunk (512 tokens):
+  "Leave policy section covering annual leave,
+   sick leave, and emergency leave provisions..."
+
+Child Chunks (128 tokens each):
+  Child 1: "Annual leave: 20 days per year..."
+  Child 2: "Sick leave: up to 10 days..."
+  Child 3: "Emergency leave: 3 days..."
+
+Query: "How many sick days?"
+→ Matches Child 2
+→ Returns Parent (full 512-token context) to LLM
+```
+
+**Storage:** Child embeddings in vector DB; parent chunks in a document store (key-value)
+
+**Best for:** Precise retrieval without sacrificing full context
+**Tools:** LangChain `ParentDocumentRetriever`
+
+---
+
+### 8. Overlap by Document Structure (Structural Chunking)
+
+**How it works:** Use the document's native structure (headings, sections, chapters) as chunk boundaries. Overlap includes the section heading in every child chunk.
+
+```
+# Section 3: Leave Policy          ← Always included in child chunks
+## 3.1 Annual Leave
+  Content about annual leave...
+
+## 3.2 Sick Leave
+  Content about sick leave...
+```
+
+Each chunk carries the breadcrumb path:
+```
+Chunk: "Section 3: Leave Policy > 3.2 Sick Leave: Content..."
+```
+
+**Best for:** Markdown docs, PDFs with clear heading hierarchy, SOWs, technical manuals
+**Tools:** `MarkdownHeaderTextSplitter`, `HTMLHeaderTextSplitter` (LangChain)
+
+---
+
+### 9. Token-Aware Overlap (Model-Specific)
+
+**How it works:** Chunk boundaries are calculated in tokens (not characters) to respect the embedding model's max input length. Overlap is also in tokens.
+
+```
+Model max tokens: 512
+Chunk size: 400 tokens
+Overlap: 50 tokens
+→ Each chunk fits within model limit with 50-token boundary buffer
+```
+
+**Important:** Character-based chunking can inadvertently exceed model token limits since 1 character ≠ 1 token. Token-aware splitting prevents embedding truncation.
+
+**Tools:** `tiktoken` (OpenAI), `transformers AutoTokenizer`
+
+```python
+from langchain.text_splitter import TokenTextSplitter
+
+splitter = TokenTextSplitter(
+    chunk_size=400,
+    chunk_overlap=50
+)
+```
+
+---
+
+### Chunk Size & Overlap Decision Guide
+
+| Document Type | Chunk Size | Overlap | Strategy |
+|---|---|---|---|
+| Short QA / FAQs | 128–256 tokens | 20–30 tokens | Fixed-size or sentence |
+| Policy / Legal docs | 512–1024 tokens | 64–128 tokens | Paragraph or structural |
+| Technical manuals | 512 tokens | 64 tokens | Recursive + structural |
+| Code | Function-level | None (use AST) | Code splitter |
+| Mixed-topic articles | Variable | N/A | Semantic chunking |
+| Long reports / SOWs | Parent-child | N/A | Hierarchical |
+| Real-time streams | Small, sliding | 25–50% | Sliding window |
+
+---
+
+### Overlap Size Trade-offs
+
+| Overlap | Pros | Cons |
+|---|---|---|
+| **0% (no overlap)** | Smallest index, fastest | Loses context at boundaries |
+| **10–15%** | Balanced; covers most boundary cases | Slight redundancy |
+| **20–25%** | Good for dense, interconnected text | Larger index |
+| **50%+** | Maximum boundary coverage | 2× storage, high redundancy |
+| **Semantic (variable)** | No arbitrary cutoffs | Unpredictable chunk sizes |
+
+---
+
+### Full Pipeline: Chunking → Retrieval → Generation
+
+```
+Raw Document
+    ↓
+[Chunking Strategy]
+  ├── Structural (headings/sections)
+  ├── Semantic (topic-aware)
+  └── Fixed-size with overlap
+    ↓
+[Embedding]
+  └── Model: BGE / E5 / Ada-002 / Local
+    ↓
+[Index]
+  ├── Dense: FAISS / HNSW / Pinecone
+  └── Sparse: BM25 / Elasticsearch
+    ↓
+[Retrieval]
+  ├── Hybrid (Dense + Sparse)
+  ├── Metadata-filtered
+  └── Parent-child lookup
+    ↓
+[Post-Retrieval]
+  ├── Re-ranking (Cross-encoder)
+  └── Contextual compression
+    ↓
+[LLM Generation]
+```
+
+---
+
+*Last updated: February 2026 — Notes are live and growing.*
