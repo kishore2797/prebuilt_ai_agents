@@ -716,6 +716,47 @@ Query
 
 ---
 
+### 12. Front-Matter Injection
+
+**How it works:** Certain chunks — typically the document's title page, copyright page, or metadata header — are **always injected** into the LLM context at query time, regardless of their retrieval score. They bypass the similarity search entirely.
+
+**Why it matters:** Retrieval is score-based, so the front matter of a document (author, title, year, ISBN) often scores low for most queries — but its absence causes the LLM to hallucinate wrong metadata. Front-matter injection pins this grounding context into every answer.
+
+**Pipeline:**
+```
+Query
+  ↓
+Similarity Search → Top-K chunks (scored)
+  +
+Front-matter chunk (always included, score-independent)
+  ↓
+Combined context → LLM
+```
+
+**Real example (from simple-rag project):**
+```
+[FRONT MATTER]
+Title: "Deep Learning" | Authors: Goodfellow, Bengio, Courville | Year: 2016
+
+[RETRIEVED CHUNK 1] ...backpropagation is used to compute gradients...
+[RETRIEVED CHUNK 2] ...regularization techniques such as dropout...
+```
+The `[FRONT MATTER]` tag tells the LLM: *trust this for author/year over anything else in the chunks.*
+
+**Variations:**
+| Variant | What's injected | When to use |
+|---------|----------------|-------------|
+| **Title/copyright page** | Author, year, publisher | Books, reports, academic papers |
+| **Document header** | Filename, upload date, version | Internal docs, policies |
+| **System metadata** | User role, department, date | Multi-tenant RAG, RBAC-scoped retrieval |
+| **Publication year annotation** | Extracted year, labelled explicitly | Prevents LoC/control number confusion |
+
+**Best for:** Any document-based RAG where metadata accuracy matters (citations, policies, legal docs, research papers)
+
+**Relationship to other methods:** Front-matter injection is a lightweight complement to **Metadata-Filtered Retrieval** — instead of filtering by metadata, you always include it. Often combined with a **metadata-aware prompt** that explicitly instructs the LLM to prioritise the injected front matter over inline text.
+
+---
+
 ### Retrieval Method Comparison
 
 | Method | Semantic Match | Exact Match | Speed | Complexity | Best Use |
@@ -728,6 +769,7 @@ Query
 | HyDE / Multi-vector | ✅ Excellent | ❌ Poor | Medium | High | Short/ambiguous queries |
 | Contextual Compression | ✅ Excellent | ✅ Good | Slow | Medium | Long documents |
 | Metadata Filtered | ✅ Good | ✅ Good | Fast | Low | Scoped retrieval |
+| Front-Matter Injection | ➖ N/A | ✅ Exact | Zero overhead | Very Low | Metadata-critical docs |
 
 ---
 
