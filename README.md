@@ -15,6 +15,8 @@
 8. [Chunking & Chunk Overlap Strategies](#8-chunking--chunk-overlap-strategies)
     - [Page Index Chunking](#10-page-index-chunking)
 
+> **Note:** VectifyAI PageIndex (vectorless, reasoning-based RAG) is covered in [Section 6](#6-rag--advanced--experimental-variants).
+
 ---
 
 ## 1. Agent Frameworks & Tools
@@ -395,6 +397,72 @@ Benefits: Better attention control, reduced distraction. **Maturity: Research (r
 
 ---
 
+#### PageIndex (VectifyAI) — Vectorless, Reasoning-based RAG
+**Focus:** Replace vector search entirely with LLM reasoning over a hierarchical document tree.
+
+Inspired by AlphaGo-style tree search, PageIndex builds a semantic "Table of Contents" tree from a PDF, then uses an LLM to *reason* its way through the tree to the relevant section — no embeddings, no chunking, no vector DB.
+
+**How it works:**
+```
+Step 1 — Indexing:
+PDF → LLM parses structure → Hierarchical Tree Index
+  {
+    "title": "Financial Stability",
+    "node_id": "0006",
+    "start_index": 21,       ← start page
+    "end_index": 22,         ← end page
+    "summary": "The Federal Reserve...",
+    "nodes": [
+      { "title": "Monitoring Financial Vulnerabilities",
+        "node_id": "0007", "start_index": 22, "end_index": 28,
+        "summary": "The Federal Reserve's monitoring..." },
+      ...
+    ]
+  }
+
+Step 2 — Retrieval:
+Query → LLM reasons over tree nodes (tree search)
+       → Navigates branches like a human expert
+       → Selects node → fetches actual pages
+       → LLM generates answer from page content
+```
+
+**Comparison to traditional RAG:**
+| | Traditional RAG | PageIndex |
+|---|---|---|
+| Index type | Vector embeddings | Hierarchical tree (ToC) |
+| Retrieval | Cosine similarity | LLM reasoning (tree search) |
+| Chunking | Required | None |
+| Vector DB | Required | None |
+| Explainability | Opaque ("vibe retrieval") | Traceable — exact page + section |
+| Best for | General QA | Long professional documents |
+
+**Benchmark result:** Achieved **98.7% accuracy on FinanceBench** (SEC filings, earnings reports) — state-of-the-art, outperforming all vector-based RAG systems.
+
+**Use cases:** Financial reports, regulatory filings, academic textbooks, legal/technical manuals — any document exceeding LLM context limits with complex internal structure.
+
+**Maturity: Production-ready** (open-source + cloud + MCP API available)
+
+**Quick start:**
+```python
+# Install
+pip install pageindex
+
+import os
+os.environ["OPENAI_API_KEY"] = "your-key"
+
+from pageindex import PageIndex
+
+pi = PageIndex()
+tree = pi.build("document.pdf")   # Step 1: build tree index
+result = pi.search(tree, "What is the return policy?")  # Step 2: reasoning retrieval
+print(result)
+```
+
+**Resources:** [GitHub](https://github.com/VectifyAI/PageIndex) · [Docs](https://docs.pageindex.ai) · [Chat Platform](https://chat.pageindex.ai) · [MCP](https://pageindex.ai/mcp)
+
+---
+
 ### Evolution Overview
 
 | Variant | Focus | Maturity |
@@ -412,6 +480,7 @@ Benefits: Better attention control, reduced distraction. **Maturity: Research (r
 | TV-RAG | Video + temporal | Emerging |
 | SignRAG | Gesture retrieval | Research |
 | RAGMask | Token-level filtering | Research |
+| **PageIndex (VectifyAI)** | Vectorless reasoning-based retrieval | Production |
 
 ### Key Insight
 
