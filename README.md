@@ -13,6 +13,7 @@
 6. [RAG — Advanced & Experimental Variants](#6-rag--advanced--experimental-variants)
 7. [Retrieval Methods](#7-retrieval-methods)
 8. [Chunking & Chunk Overlap Strategies](#8-chunking--chunk-overlap-strategies)
+    - [Page Index Chunking](#10-page-index-chunking)
 
 ---
 
@@ -1025,6 +1026,46 @@ splitter = TokenTextSplitter(
 
 ---
 
+### 10. Page Index Chunking
+
+**How it works:** Each page of a document becomes one indexing unit. The page boundary is used as the natural split point rather than token counts or semantic signals. The page number is stored as metadata alongside the text.
+
+```
+PDF Page 1: "Chapter 1: Introduction..."
+PDF Page 2: "...continued from Chapter 1. Background..."
+PDF Page 3: "Chapter 2: Methods..."
+
+Chunk 1 = Page 1 content  { metadata: { page: 1 } }
+Chunk 2 = Page 2 content  { metadata: { page: 2 } }
+Chunk 3 = Page 3 content  { metadata: { page: 3 } }
+```
+
+**Example (LangChain PyPDFLoader):**
+```python
+from langchain_community.document_loaders import PyPDFLoader
+
+loader = PyPDFLoader("document.pdf")
+pages = loader.load()  # Each Document = one page
+
+# Each chunk carries page metadata:
+# { "text": "...", "metadata": { "source": "document.pdf", "page": 3 } }
+```
+
+**Overlap behaviour:** No explicit overlap — page content is self-contained. Cross-page context loss is accepted as a trade-off for precise citation.
+
+**Best for:** PDFs with structured layouts (textbooks, reports, academic papers, legal filings) where answers need to cite a specific page
+**Weakness:** Pages can be very short (e.g., chapter title pages) or very long (dense tables); uneven chunk sizes. Context that spans two pages is split hard.
+
+**Comparison to other strategies:**
+| Strategy | Split by | Overlap control |
+|---|---|---|
+| Fixed-size | Token/char count | Yes |
+| Sentence | Sentence boundary | Yes (in sentences) |
+| **Page index** | Physical page | No (natural boundary) |
+| Semantic | Topic shift | No (variable) |
+
+---
+
 ### Chunk Size & Overlap Decision Guide
 
 | Document Type | Chunk Size | Overlap | Strategy |
@@ -1036,6 +1077,7 @@ splitter = TokenTextSplitter(
 | Mixed-topic articles | Variable | N/A | Semantic chunking |
 | Long reports / SOWs | Parent-child | N/A | Hierarchical |
 | Real-time streams | Small, sliding | 25–50% | Sliding window |
+| PDFs requiring page citation | 1 page | None | Page index |
 
 ---
 
